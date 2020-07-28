@@ -1,0 +1,53 @@
+Chrome Extensions for debugging
+---------------------------------------
+1. React Developer Tools
+2. Redux DevTools
+
+
+Database Tech
+---------------------------------------
+1. MongoDB (NoSql)
+2. Hosted in MongoDB Atlas Platform 
+   (Uses AWS, free 512MB) coud be done by building 
+   dedicated server using Digital Ocean
+3. NPM package mongoose 
+   (model data[give structure] + gives some usefull functions like: find)
+
+APP Tech Stack
+---------------------------------------
+1. Will be hosted on Heroku server
+
+
+
+
+Frontend
+---------------------------------------
+1. profile image using gravatar
+2. Concurrently helps to run react & express server 
+   with a single command
+
+
+
+Backend
+---------------------------------------
+
+
+
+Security
+----------------------------------------
+1. Store Password in database using bcryptjs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
