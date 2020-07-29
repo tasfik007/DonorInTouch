@@ -1,12 +1,12 @@
-// << Importing Packages >>
+// Importing Packages
 const express = require('express');
 const connectDB = require('./config/db');
 const app = express();
 
-// << Defining User allocated port >>
+// Defining User allocated port
 const PORT = process.env.PORT || 5000;
 
-// << Connect to MongoDB Database >>
+// Connect to MongoDB Database
 connectDB();
 
 app.get('/', (req, res) => res.send('API is running!!'));

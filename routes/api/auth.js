@@ -1,4 +1,4 @@
-// << Connect to MongoDB through mongoose >>
+// Connect to MongoDB through mongoose
 const express = require('express');
 const router = express.Router();
 
