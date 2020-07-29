@@ -30,6 +30,7 @@ Frontend
 
 Backend
 ---------------------------------------
+1. Postman software to test & store different routes
 
 
 
