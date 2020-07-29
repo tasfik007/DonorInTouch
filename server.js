@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB Database
 connectDB();
 
+// init middleware
+app.use(express.json({ extended: false }));
+
 app.get('/', (req, res) => res.send('API is running!!'));
 
 //Importing routes form route/api/ location
