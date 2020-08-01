@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://donorintouch123:donorintouch123@donorintouch.mrctf.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://donorintouch123:donorintouch123@donorintouch.mrctf.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret": "tasfikroot"
 }
