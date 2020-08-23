@@ -1,10 +1,14 @@
 // Connect to MongoDB through mongoose
 const express = require('express');
+const axios = require('axios');
+const config = require('config');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const { check, validationResult } = require('express-validator');
+
+const normalize = require('normalize-url');
 /* 
 @route      |       GET api/profile/me
 @desc       |       Get current user profile
@@ -60,14 +64,42 @@ router.post(
             facebook
         } = req.body;
 
-        
+        const profileFields = {
+            user: req.user.id,
+            company,
+            location,
+            website: website && website !== '' ? normalize(website, { forceHttps: true }) : '',
+            bio,
+            skills: Array.isArray(skills)
+                ? skills
+                : skills.split(',').map((skill) => ' ' + skill.trim()),
+            status,
+            githubusername
+        };
 
+        // Build social object and add to profileFields
+        const socialfields = { youtube, twitter, instagram, linkedin, facebook };
 
+        for (const [key, value] of Object.entries(socialfields)) {
+            if (value && value.length > 0)
+                socialfields[key] = normalize(value, { forceHttps: true });
+        }
+        profileFields.social = socialfields;
 
-
-
+        try {
+            // Using upsert option (creates new doc if no match is found):
+            let profile = await Profile.findOneAndUpdate(
+                { user: req.user.id },
+                { $set: profileFields },
+                { new: true, upsert: true }
+            );
+            res.json(profile);
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
     }
-)
+);
 
 
 // exporting the route to server.js file
